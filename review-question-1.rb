@@ -1,5 +1,3 @@
-## QUESTION 1
-
 pokemon = [
   {
     "id": 1,
@@ -60,8 +58,54 @@ pokemon = [
 }
 ]
 
+def find_ability_url (array)
+  lil_bub = array.select do |pokiez|
+    pokiez[:name] == "bulbasaur"
+  end
+  lil_bub[0][:abilities][0][:ability][:url]
+end
 
-# How would you get the url for Bulbasaur's ability?
+find_ability_url(pokemon)
+
+
+def exp_over_40 (array)
+  array.first do |pokiez|
+    [pokiez][:base_experience] > 40
+  end
+end
+
+def all_poke_exp_over_40 (array)
+  array.select do |pokiez|
+    pokiez[:base_experience] > 40
+  end
+end
+      #  exp_over_40(pokemon)
+    #  all_poke_exp_over_40(pokemon)
+    # find_ability_url(pokemon)
+
+    def all_pokemon_names (array)
+      array.collect do |pokies|
+        pokies[:name]
+      end
+    end
+
+      def all_pokemon_names (array)
+       return_array = []
+      array.select do |pokies|
+       return_array << pokies[:name]
+      end
+      return_array
+    end
+
+    all_pokemon_names(pokemon)
+
+
+    def pokeweight (ary)
+      ary.any?{|pokes| pokes[:weight] > 60}
+    end
+
+# all_pokemon_names
+# # How would you get the url for Bulbasaur's ability?
 # How would you return the first pokemon with base experience over 40?
 # How would you return ALL OF THE pokemon with base experience over 40? (Gotta catch em all)
 # How would you return an array of all of the pokemon's names?

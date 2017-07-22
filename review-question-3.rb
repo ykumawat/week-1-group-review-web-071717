@@ -20,3 +20,52 @@ photo.comments
 
 Comment.all
 #=> [<comment1>]
+
+###########################################################################
+class User
+  attr_accessor :name, :photos
+
+  def initialize(name)
+    @name = name
+    @photos = []
+  end
+
+  def add_photo(photo)
+    self.photos << photo
+    photo.user = self
+  end
+
+end
+
+class Photo
+  attr_accessor :user, :comments
+  @@all = []
+  def initialize
+    @comments = []
+    @@all << self
+  end
+
+  def make_comment(comment)
+    @comments << Comment.new(comment)
+  end
+
+  def self.all
+    @@all
+  end
+
+end
+
+class Comment
+  attr_accessor :text
+  @@all = []
+
+  def initialize(text)
+    @text = text
+    @@all << self
+  end
+
+  def self.all
+    @@all
+  end
+
+end
